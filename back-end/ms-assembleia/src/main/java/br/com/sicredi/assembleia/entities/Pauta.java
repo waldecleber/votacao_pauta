@@ -2,7 +2,9 @@ package br.com.sicredi.assembleia.entities;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +14,6 @@ import javax.persistence.Table;
 
 import org.springframework.data.annotation.Id;
 
-import antlr.collections.List;
 import lombok.Builder;
 import lombok.Data;
 
@@ -32,14 +33,17 @@ public class Pauta implements Serializable {
 	@GeneratedValue(generator = "associadoSequenceGen", strategy = GenerationType.SEQUENCE)
 	private Long id;
 	
+	@Column(name = "titulo", length = 255)
 	private String titulo;
 	
+	@Column(name = "local")
 	private String local;
 	
+	@Column(name = "data")
 	private LocalDateTime data;
 	
 	@OneToMany(mappedBy = "pauta")
-	private List votos;
+	private List<Voto> votos;
 	
 	
 

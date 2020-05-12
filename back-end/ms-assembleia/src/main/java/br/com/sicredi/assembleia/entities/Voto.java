@@ -3,6 +3,7 @@ package br.com.sicredi.assembleia.entities;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -34,8 +35,10 @@ public class Voto implements Serializable {
 	@GeneratedValue(generator = "votoSequenceGen", strategy = GenerationType.SEQUENCE)
 	private Long id;
 	
+	@Column(name = "resposta")
 	private boolean resposta;
 	
+	@Column(name = "data")
 	private LocalDateTime data;
 	
 	@JoinColumn(name = "id_associado")

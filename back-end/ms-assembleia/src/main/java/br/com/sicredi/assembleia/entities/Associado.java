@@ -2,6 +2,7 @@ package br.com.sicredi.assembleia.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,8 +27,10 @@ public class Associado implements Serializable {
 	@GeneratedValue(generator = "associadoSequenceGen", strategy = GenerationType.SEQUENCE)
 	private Long id;
 	
+	@Column(name = "nome", length = 255)
 	private String nome;
 	
+	@Column(name = "cpf")
 	private String cpf;
 
 }
