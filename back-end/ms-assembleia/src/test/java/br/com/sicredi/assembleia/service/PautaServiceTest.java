@@ -6,6 +6,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,6 +19,7 @@ import br.com.sicredi.assembleia.dto.PautaDTO;
 import br.com.sicredi.assembleia.entities.Pauta;
 import br.com.sicredi.assembleia.entities.Voto;
 import br.com.sicredi.assembleia.repository.PautaRepository;
+import br.com.sicredi.assembleia.repository.VotacaoRepository;
 import br.com.sicredi.assembleia.service.impl.PautaServiceImpl;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -29,12 +31,16 @@ public class PautaServiceTest {
 	@Mock
 	private PautaRepository pautaRepository;
 	
+	@Mock
+	private VotacaoRepository votacaoRepository;
+	
 	@Test
 	public void salvaUmaPautaComSucesso() {
 		PautaDTO pautaDTO = PautaDTO.builder()
 				.titulo("Deseja votar no item vermelho?")
-				.data(LocalDateTime.now())
 				.build();
+		pautaDTO.setDataCriacao(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
+		pautaDTO.setEncerrada(Boolean.FALSE);
 		
 		Pauta pauta = new Pauta();
 		BeanUtils.copyProperties(pautaDTO, pauta);

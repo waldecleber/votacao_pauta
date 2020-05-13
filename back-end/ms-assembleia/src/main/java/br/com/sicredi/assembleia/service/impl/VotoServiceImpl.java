@@ -20,4 +20,6 @@ public class VotoServiceImpl implements VotoService {
 		votoRepository.save(voto);		
 	}
 
+	
+
 }

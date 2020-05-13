@@ -1,6 +1,5 @@
 package br.com.sicredi.assembleia.controller;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,33 +13,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.sicredi.assembleia.dto.PautaDTO;
+import br.com.sicredi.assembleia.dto.VotacaoDTO;
+import br.com.sicredi.assembleia.dto.VotoDTO;
 import br.com.sicredi.assembleia.entities.Pauta;
-import br.com.sicredi.assembleia.service.PautaService;
+import br.com.sicredi.assembleia.service.VotacaoService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/pautas")
+@RequestMapping("/votacao")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class PautaController {
+public class VotacaoController {
 	
-	private final PautaService pautaService;
+	private final VotacaoService votacaoService;
 	
 	@CrossOrigin
 	@GetMapping
-	public ResponseEntity<List<PautaDTO>> listarPautasEmAberto() {		
-		return ResponseEntity.ok().body(pautaService.listarPautasEmAberto());
+	public ResponseEntity<List<VotacaoDTO>> listarVotacoesEmAberto() {		
+		return ResponseEntity.ok().body(votacaoService.listarVotacoesEmAberto());
 	}
-
-//	@CrossOrigin
-//	@GetMapping(path = "/listarTodas")
-//	public ResponseEntity<List<PautaDTO>> listarTodasPautas() {		
-//		return ResponseEntity.ok().body(pautaService.listarTodasPautas());
-//	}
-		
+	
 	@CrossOrigin
-	@PostMapping
-	public ResponseEntity<Pauta> salvar(@RequestBody PautaDTO pauta) {    	
-		return ResponseEntity.status(HttpStatus.CREATED).body(pautaService.salvar(pauta));			
+	@PostMapping(path = "/voto")
+	public ResponseEntity<VotacaoDTO> realizarVotacao(@RequestBody VotoDTO voto) {    	
+		return ResponseEntity.status(HttpStatus.CREATED).body(votacaoService.realizarVotacao(voto));			
 	}
 
 }

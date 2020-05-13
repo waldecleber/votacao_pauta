@@ -1,0 +1,1 @@
+java $JAVA_OPTS -Dserver.port=7001 -Dspring.profiles.active=heroku -jar target/*.jar

@@ -4,6 +4,6 @@ import br.com.sicredi.assembleia.entities.Voto;
 
 public interface VotoService {
 
-	public void realizarVotacao(Voto voto);
-	
+	void realizarVotacao(Voto voto);
+
 }

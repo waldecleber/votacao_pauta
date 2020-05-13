@@ -1,7 +1,7 @@
 package br.com.sicredi.assembleia.entities;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,9 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -21,12 +20,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "voto")
+@Table(name = "votacao")
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Voto implements Serializable {
+public class Votacao implements Serializable {
 
 	/**
 	 * 
@@ -37,19 +36,14 @@ public class Voto implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "resposta")
-	private boolean resposta;
-	
-	@Column(name = "data_voto")
-	private LocalDateTime data;
-	
-	@JoinColumn(name = "id_associado")
+	@JoinColumn(name = "id_pauta")
 	@OneToOne(fetch = FetchType.LAZY)
-	private Associado associado;
+	private Pauta pauta;
 	
-	@JoinColumn(name = "id_votacao")
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Votacao votacao;
+	@Column(name = "total_votos")
+	private Integer total;
 	
+	@OneToMany(mappedBy = "votacao")
+	private List<Voto> votos;
 	
 }

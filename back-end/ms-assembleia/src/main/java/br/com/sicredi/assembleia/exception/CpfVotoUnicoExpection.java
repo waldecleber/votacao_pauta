@@ -3,15 +3,15 @@ package br.com.sicredi.assembleia.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus(HttpStatus.NOT_FOUND)
-public class VotacaoTerminadaExpection extends RuntimeException {
+@ResponseStatus(HttpStatus.BAD_REQUEST)
+public class CpfVotoUnicoExpection extends RuntimeException {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	public VotacaoTerminadaExpection(String msg) {
+	public CpfVotoUnicoExpection(String msg) {
 		super(msg);
 	}
 

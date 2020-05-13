@@ -1,11 +1,10 @@
 package br.com.sicredi.assembleia.dto;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.persistence.Column;
-
+import br.com.sicredi.assembleia.entities.Pauta;
+import br.com.sicredi.assembleia.entities.Voto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,8 +14,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PautaDTO implements Serializable {
-	
+public class VotacaoDTO implements Serializable {
+
 	/**
 	 * 
 	 */
@@ -24,12 +23,9 @@ public class PautaDTO implements Serializable {
 
 	private Long id;
 	
-	private String titulo;
+	private PautaDTO pauta;
 	
-	private LocalDateTime dataValidade;
+	private Integer total;
 	
-	private LocalDateTime dataCriacao;
-	
-	private boolean encerrada;
-
+	private List<VotoDTO> votos;
 }

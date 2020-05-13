@@ -45,6 +45,12 @@
                 <dataSource.project.jdbcURL>jdbc:mysql://mysqldb:3306/votacao_assembleia?createDatabaseIfNotExist=true</dataSource.project.jdbcURL>
             </properties>
         </profile>
+        <profile>
+            <id>heroku</id>
+            <properties>
+                <dataSource.project.jdbcURL>jdbc:mysql://bda83c7e8b3a54:7ac77bd7@us-cdbr-east-02.cleardb.net/heroku_13ff0fbdba14258?reconnect=true</dataSource.project.jdbcURL>
+            </properties>
+        </profile>
     </profiles>
 
 	<dependencies>
@@ -70,6 +76,13 @@
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka</artifactId>
 		</dependency>
+		
+		<!-- FEIGN REST CLIENT -->
+		<dependency>
+		   <groupId>org.springframework.cloud</groupId>
+		   <artifactId>spring-cloud-starter-openfeign</artifactId>
+		   <version>2.1.0.RELEASE</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -77,11 +90,13 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+		
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
