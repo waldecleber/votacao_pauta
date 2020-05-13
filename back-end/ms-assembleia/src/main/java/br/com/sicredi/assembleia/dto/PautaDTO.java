@@ -20,8 +20,6 @@ public class PautaDTO implements Serializable {
 	
 	private String titulo;
 	
-	private String local;
-	
 	private LocalDateTime data;
 	
 	private List<VotoDTO> votos;
